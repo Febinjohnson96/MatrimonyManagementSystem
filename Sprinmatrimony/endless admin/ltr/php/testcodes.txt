@@ -1,0 +1,42 @@
+<?php
+//session_start();
+include("config.php");
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+
+//$powner = $_SESSION['Pownerid'];
+
+//fetchdata form mysql
+//$id= $_SESSION['client_id'];
+$sql = "SELECT count(id) FROM `items` ";
+$result = mysqli_query($conn, $sql);
+$row_count = mysqli_fetch_array($result);
+
+//$id_not= $_SESSION['client_id'];
+$sql_not = "SELECT count(id) FROM `join` ";
+$result_not = mysqli_query($conn, $sql_not);
+$row_count_not = mysqli_fetch_array($result_not);
+
+//$id_not= $_SESSION['client_id'];
+$sql_order = "SELECT count(id) FROM `task` ";
+$result_order = mysqli_query($conn, $sql_order);
+$row_count_order = mysqli_fetch_array($result_order);
+
+//$id_not= $_SESSION['client_id'];
+$sql_noti = "SELECT count(id) FROM `order_admin_status0` ";
+$result_noti = mysqli_query($conn, $sql_noti);
+$row_count_noti = mysqli_fetch_array($result_noti);
+
+//$id_not= $_SESSION['client_id'];
+$sql_cust = "SELECT count(id) FROM `customer` ";
+$result_cust = mysqli_query($conn, $sql_cust);
+$row_cust = mysqli_fetch_array($result_cust);
+
+$a= $_SESSION['client_id'];
+$sql_pic = "SELECT * FROM `join` where id = '$a'  ";
+$result_pic = mysqli_query($conn, $sql_pic);
+$row_pic = mysqli_fetch_assoc($result_pic);
+?>
